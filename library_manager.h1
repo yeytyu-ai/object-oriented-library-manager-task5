@@ -1,0 +1,49 @@
+#ifndef LIBRARY_MANAGER_H
+#define LIBRARY_MANAGER_H
+
+#include <string>
+#include <vector>
+
+class Book {
+private:
+    int bookId;
+    std::string title;
+    std::string author;
+    std::string category;
+    int year;
+    bool available;
+
+public:
+    Book(int id, const std::string& title,
+         const std::string& author,
+         const std::string& category, int year);
+
+    int getId() const;
+    std::string getTitle() const;
+    std::string getAuthor() const;
+    std::string getCategory() const;
+    int getYear() const;
+    bool isAvailable() const;
+
+    void borrowBook();
+    void returnBook();
+    void display() const;
+};
+
+class Library {
+private:
+    std::vector<Book> books;
+
+public:
+    bool addBook(const Book& book);
+    void displayBooks() const;
+    void searchBook(int id) const;
+    bool updateBook(int id, const std::string& title,
+                    const std::string& author,
+                    const std::string& category, int year);
+    void borrowBook(int id);
+    void returnBook(int id);
+    std::vector<Book> getBooks() const;
+};
+
+#endif
